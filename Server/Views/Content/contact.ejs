@@ -1,3 +1,31 @@
 <div class="container">
     <h1><%= title %></h1>
+    <p>I can always be reached through email. You can complete the form below with your contact information adn with a message, and I'll reply as soon as possible.</p>
+    <form id="form" onsubmit="validatePage()" method="post">
+        <fieldset>
+            <p>
+                <label for="txtFName">First Name: </label>
+                <input name="txtFName" id="txtFName" size="35" type="text" tabindex="1" required="required">
+            </p>
+            <p>
+                <label for="txtLName">Last Name: </label>
+                <input name="txtLName" id="txtLName" size="35" type="text" tabindex="3" required="required">
+            </p>                     
+            <p>
+                <label for="txtEmail">Email: </label>
+                <input name="txtEmail" id="txtEmail" size="35" type="text" tabindex="19" required="required" pattern="\b[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}\b">
+            </p>
+            <label for="Comments">Short Message:</label>
+                <input name="Comments" id="Comments" size="55" type="text" tabindex="21">
+            <br>
+            <br>
+            <input name="btnSubmit" tabindex="21" type="submit" value="Send request" class="button" href="/home">                    
+        </fieldset>
+        <script>
+            function validatePage()
+            {
+                let firstName = document.forms["form"]["txtFName"].value;
+                let lastName = document.forms["form"]["txtFName"].value;
+            }
+        </script>  
 </div>
