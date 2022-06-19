@@ -9,17 +9,19 @@ import mongoose from 'mongoose';
 
 //Import router data
 import indexRouter from '../Routes/index';
+import movieListRouter from '../Routes/movie-list';
 
 const app = express();
 
 //Step 2 - DB configuration
-import * as DBconfig from './db';
-mongoose.connect(DBconfig.LocalURI);
+import * as DBConfig from './db';
+mongoose.connect(DBConfig.LocalURI);
+
 const db = mongoose.connection;
 
 db.on("open", function()
 {
-  console.log(`Connected to MongoDB at: ${DBconfig.HostName}`);
+  console.log(`Connected to MongoDB at: ${DBConfig.HostName}`);
 });
 
 db.on("error", function()
@@ -39,6 +41,7 @@ app.use(express.static(path.join(__dirname, '../../Client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 app.use('/', indexRouter);
+app.use('/', movieListRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next)
