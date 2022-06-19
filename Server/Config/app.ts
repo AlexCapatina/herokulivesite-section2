@@ -69,7 +69,7 @@ app.use(session({
 app.use(flash());
 
 //Initialize passport
-app.use(passport.initialize);
+app.use(passport.initialize());
 app.use(passport.session());
 
 //Implement authentication Strategy
