@@ -10,6 +10,6 @@ router.get('/login', auth_1.DisplayLoginPage);
 router.get('/register', auth_1.DisplayRegisterPage);
 router.post('/login', auth_1.ProcessLoginPage);
 router.post('/register', auth_1.ProcessRegisterPage);
-router.get('/logout', auth_1.ProcessLofoutPage);
+router.get('/logout', auth_1.ProcessLogoutPage);
 exports.default = router;
 //# sourceMappingURL=auth.js.map

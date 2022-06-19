@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 // import the controller module
-import { DisplayRegisterPage, ProcessLofoutPage, DisplayLoginPage, ProcessLoginPage, ProcessRegisterPage } from "../Controllers/auth";
+import { DisplayRegisterPage, ProcessLogoutPage, DisplayLoginPage, ProcessLoginPage, ProcessRegisterPage } from "../Controllers/auth";
 
 /* Display login page. */
 router.get('/login', DisplayLoginPage);
@@ -17,6 +17,6 @@ router.post('/login', ProcessLoginPage);
 router.post('/register', ProcessRegisterPage);
 
 /* Process logout page. */
-router.get('/logout', ProcessLofoutPage);
+router.get('/logout', ProcessLogoutPage);
 
 export default router;

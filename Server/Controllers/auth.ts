@@ -5,15 +5,26 @@ import passport from 'passport';
 //include User model for authentication functions
 import User from '../Models/user';
 
+//import DisplayName Utility method
+import { UserDisplayName } from '../Util';
+
 //Display functions
 export function DisplayLoginPage(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-   res.render('index', {title: 'Login', page: 'login', message: req.flash('loginMessage'), displayName:''});
+   if(!req.user)
+   {
+        res.render('index', {title: 'Login', page: 'login', message: req.flash('loginMessage'), displayName: UserDisplayName(req)});
+   }
+    return res.redirect('/movie-list');
 }
 
 export function DisplayRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-    res.render('index', {title: 'register', page: 'register', message: req.flash('registerMessage'), displayName:''});
+    if(!req.user)
+    {
+        return res.render('index', {title: 'register', page: 'register', message: req.flash('registerMessage'), displayName: UserDisplayName(req)});
+    }
+    
 }
 
 //Process Functions
@@ -80,7 +91,10 @@ export function ProcessRegisterPage(req: express.Request, res: express.Response,
 
 export function ProcessLogoutPage(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-    req.logOut();
+    req.logOut(function()
+    {
+        console.log("User logged out")
+    });
 
     res.redirect ('/login');
 }
