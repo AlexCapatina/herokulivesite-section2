@@ -8,20 +8,33 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/home"><i class="fa-solid fa-house-flag"></i> Home</a>
+            <a class="nav-link <%= (page == 'home') ?'active' : ''; %>" aria-current="page" href="/home"><i class="fa-solid fa-house-flag"></i> Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/about"><i class="fa-solid fa-person fa-lg"></i> About</a>
+            <a class="nav-link <%= (page == 'about') ?'active' : ''; %>" aria-current="page" href="/about"><i class="fa-solid fa-person fa-lg"></i> About</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/projects"><i class="fa-solid fa-folder-open fa-lg"></i> Project</a>
+            <a class="nav-link <%= (page == 'projects') ?'active' : ''; %>" aria-current="page" href="/projects"><i class="fa-solid fa-folder-open fa-lg"></i> Project</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/services"><i class="fa-solid fa-briefcase fa-lg"></i> Services</a>
+            <a class="nav-link <%= (page == 'services') ?'active' : ''; %>" aria-current="page" href="/services"><i class="fa-solid fa-briefcase fa-lg"></i> Services</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/contact"><i class="fa-solid fa-address-card fa-lg"></i> Contact</a>
+            <a class="nav-link <%= (page == 'contact') ?'active' : ''; %>" aria-current="page" href="/contact"><i class="fa-solid fa-address-card fa-lg"></i> Contact</a>
             </li>
+            <% if(displayName){ %>
+                <li class="nav-item">
+                    <a class="nav-link <%= (page == 'movie-list') ?'active' : ''; %>" aria-current="page" href="/movie-list"><i class="fa-solid fa-clapperboard fa-lg"></i> Movies</a>
+                    </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+                </li>
+            <% } else { %>}
+            <li class="nav-item">
+                <a class="nav-link <%= (page == 'login') ?'active' : ''; %>" aria-current="page" href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+            </li>
+          <% } %>
         </div>
     </div>
 </nav>

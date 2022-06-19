@@ -8,12 +8,12 @@ import User from '../Models/user';
 //Display functions
 export function DisplayLoginPage(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-   
+   res.render('index', {title: 'Login', page: 'login', message: req.flash('loginMessage'), displayName:''});
 }
 
 export function DisplayRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-    
+    res.render('index', {title: 'register', page: 'register', message: req.flash('registerMessage'), displayName:''});
 }
 
 //Process Functions
