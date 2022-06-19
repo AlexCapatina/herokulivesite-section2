@@ -13,6 +13,6 @@ export function DisplayMovieList(req: express.Request, res: express.Response, ne
             console.error(err);
             res.end(err);
         }
-        res.render('index', {title: 'Movie List', page: 'movie-list', movies: moviesCollection, displayName: '' });
+        res.render('index', {title: 'Movie List', page: 'movie-list', movies: moviesCollection, displayName: UserDisplayName(req) });
     });
 }

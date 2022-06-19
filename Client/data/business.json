@@ -1,0 +1,22 @@
+{
+    "contacts":
+    [
+        {                            
+            "Name": "George Lucas",
+            "Contact Number": "647 123 1977",
+            "Email": "GeorgeLucas@lucasfilm.com"          
+            
+        },
+        {                
+            "Name": "Jon Watts",
+            "Contact Number": "647 123 2021",
+            "Email": "JonWatts@spiderweb.com"           
+        },
+        {                
+            "Name": "Dan Kwan",
+            "Contact Number": "647 123 2022",
+            "Email": "DanKwan@everymail.com"
+        }
+
+    ]
+}

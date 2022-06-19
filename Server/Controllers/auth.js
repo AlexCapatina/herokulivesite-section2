@@ -9,15 +9,16 @@ const user_1 = __importDefault(require("../Models/user"));
 const Util_1 = require("../Util");
 function DisplayLoginPage(req, res, next) {
     if (!req.user) {
-        res.render('index', { title: 'Login', page: 'login', message: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
+        return res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
     }
     return res.redirect('/movie-list');
 }
 exports.DisplayLoginPage = DisplayLoginPage;
 function DisplayRegisterPage(req, res, next) {
     if (!req.user) {
-        return res.render('index', { title: 'register', page: 'register', message: req.flash('registerMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
+        return res.render('index', { title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
     }
+    return res.redirect('/movie-list');
 }
 exports.DisplayRegisterPage = DisplayRegisterPage;
 function ProcessLoginPage(req, res, next) {
@@ -49,8 +50,8 @@ function ProcessRegisterPage(req, res, next) {
     user_1.default.register(newUser, req.body.password, function (err) {
         if (err) {
             if (err.name == "UserExistsError") {
-                console.error('ERROR: User already exists');
-                req.flash('registerMessage', "Registration Error!");
+                console.error('ERROR: User Already Exists!');
+                req.flash('registerMessage', 'Registration Error!');
             }
             else {
                 console.error(err.name);
@@ -65,8 +66,12 @@ function ProcessRegisterPage(req, res, next) {
 }
 exports.ProcessRegisterPage = ProcessRegisterPage;
 function ProcessLogoutPage(req, res, next) {
-    req.logOut(function () {
-        console.log("User logged out");
+    req.logOut(function (err) {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        console.log("User Logged Out");
     });
     res.redirect('/login');
 }
