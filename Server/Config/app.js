@@ -42,9 +42,9 @@ db.on("open", function () {
     console.log(`Connected to MongoDB at: ${DBConfig.HostName}`);
 });
 db.on("error", function () {
-    console.error(`Connection error`);
+    console.error(`Connection Error`);
 });
-app.set('Views', path_1.default.join(__dirname, '../Views'));
+app.set('views', path_1.default.join(__dirname, '../Views'));
 app.set('view engine', 'ejs');
 app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.json());

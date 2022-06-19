@@ -1,8 +1,7 @@
 {
     "movies":
     [
-        {
-                            
+        {                            
             "Name": "Star Wars",
             "Year": "1977",
             "Director": "George Lucas",
